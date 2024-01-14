@@ -12,8 +12,7 @@ app.get("/api/test", (req, res) => {
 });
 
 app.post("/api/transaction", async (req, res) => {
-  console.log(process.env.MONGO_URL);
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect("mongodb+srv://kgourav1998:bankstatement@statements.ndpn6hj.mongodb.net/?retryWrites=true&w=majority");
   const { name, price, desc, datetime } = req.body;
 
   const transation = await Transaction.create({
@@ -27,7 +26,7 @@ app.post("/api/transaction", async (req, res) => {
 });
 
 app.get("/api/transactions", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect("mongodb+srv://kgourav1998:bankstatement@statements.ndpn6hj.mongodb.net/?retryWrites=true&w=majority");
   const transactions = await Transaction.find();
   res.json(transactions);
 });
